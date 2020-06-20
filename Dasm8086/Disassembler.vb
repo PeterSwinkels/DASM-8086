@@ -177,7 +177,7 @@ Public Class DisassemblerClass
                Case &H6A% : Instruction = $"PUSH BYTE {BytesToHexadecimal(GetBytes(Code, Position, Length:=1))}"
                Case &H6B%
                   Operand = GetByte(Code, Position)
-                  Instruction &= $"IMUL {XP_REGISTERS(Operand And &H7%)}, {GetOperand(Code, Position, Operand, XP_REGISTERS)}, {GetByte(Code, Position):X2}"
+                  Instruction &= $"IMUL {XP_REGISTERS((Operand And &H38%) >> &H3%)}, {GetOperand(Code, Position, Operand, XP_REGISTERS)}, {GetByte(Code, Position):X2}"
                Case &H70% To &H7F% : Instruction = $"{OPCODES_707F(Opcode And &HF%)} {NearAddressToHexadecimal(GetBytes(Code, Position, Length:=1), Position)}"
                Case &H80%
                   Operand = GetByte(Code, Position)
@@ -215,9 +215,9 @@ Public Class DisassemblerClass
                   If Not Instruction = Nothing Then Instruction &= $" {GetOperand(Code, Position, Operand, XP_REGISTERS)}"
                Case &H91% To &H97% : Instruction = $"XCHG {XP_REGISTERS(ACCUMULATOR_REGISTER)}, {XP_REGISTERS(Opcode And &H7%)}"
                Case &H9A% : Instruction = $"CALL FAR {FarAddressToHexadecimal(GetBytes(Code, Position, Length:=4))}"
-               Case &HA0% : Instruction = $"MOV {LH_REGISTERS(ACCUMULATOR_REGISTER)}, [{BytesToHexadecimal(GetBytes(Code, Position, Length:=2))}]"
+               Case &HA0% : Instruction = $"MOV {LH_REGISTERS(ACCUMULATOR_REGISTER)}, [{BytesToHexadecimal(GetBytes(Code, Position, Length:=1))}]"
                Case &HA1% : Instruction = $"MOV {XP_REGISTERS(ACCUMULATOR_REGISTER)}, [{BytesToHexadecimal(GetBytes(Code, Position, Length:=2))}]"
-               Case &HA2% : Instruction = $"MOV [{BytesToHexadecimal(GetBytes(Code, Position, Length:=2))}], {LH_REGISTERS(ACCUMULATOR_REGISTER)}"
+               Case &HA2% : Instruction = $"MOV [{BytesToHexadecimal(GetBytes(Code, Position, Length:=1))}], {LH_REGISTERS(ACCUMULATOR_REGISTER)}"
                Case &HA3% : Instruction = $"MOV [{BytesToHexadecimal(GetBytes(Code, Position, Length:=2))}], {XP_REGISTERS(ACCUMULATOR_REGISTER)}"
                Case &HA8% : Instruction = $"TEST {LH_REGISTERS(ACCUMULATOR_REGISTER)}, {BytesToHexadecimal(GetBytes(Code, Position, Length:=1))}"
                Case &HA9% : Instruction = $"TEST {XP_REGISTERS(ACCUMULATOR_REGISTER)}, {BytesToHexadecimal(GetBytes(Code, Position, Length:=2))}"
@@ -231,7 +231,7 @@ Public Class DisassemblerClass
 
                   Operand = GetByte(Code, Position)
                   If Operand < &HC0& Then
-                     Instruction &= $"{XP_REGISTERS((Operand And &H38%) >> &H3%)}, {GetOperand(Code, Position, Operand, XP_REGISTERS)}"
+                     Instruction &= $"{GetOperand(Code, Position, Operand, XP_REGISTERS)}, {XP_REGISTERS((Operand And &H38%) >> &H3%)}"
                   Else
                      Instruction = Nothing
                   End If
