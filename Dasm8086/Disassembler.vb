@@ -357,10 +357,10 @@ Public Class DisassemblerClass
 
                   If Not Instruction = Nothing Then
                      If Opcode = &HF6% Then
-                        Instruction &= $" {GetOperand(Code, Position, Operand, LH_REGISTERS)}"
+                        Instruction &= $" BYTE {GetOperand(Code, Position, Operand, LH_REGISTERS)}"
                         If (Operand And &H3F%) <= &H7% Then Instruction &= $", {BytesToHexadecimal(GetBytes(Code, Position, Length:=1))}"
                      ElseIf Opcode = &HF7% Then
-                        Instruction &= $" {GetOperand(Code, Position, Operand, XP_REGISTERS)}"
+                        Instruction &= $" WORD {GetOperand(Code, Position, Operand, XP_REGISTERS)}"
                         If (Operand And &H3F%) <= &H7% Then Instruction &= $", {BytesToHexadecimal(GetBytes(Code, Position, Length:=2))}"
                      End If
                   End If
