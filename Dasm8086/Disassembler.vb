@@ -31,10 +31,10 @@ Public Class DisassemblerClass
    Private ReadOnly OPCODES_DF__00BF As New List(Of String)({"FILD WORD", Nothing, "FIST WORD", "FISTP WORD", "FBLD TBYTE", "FILD QWORD", "FBSTP TBYTE", "FISTP QWORD"})
    Private ReadOnly OPCODES_DF__C0C7 As New List(Of String)({"FFREE", Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing})
    Private ReadOnly OPCODES_F6F7 As New List(Of String)({"TEST", Nothing, "NOT", "NEG", "MUL", "IMUL", "DIV", "IDIV"})
-   Private ReadOnly OPCODES_FE__00BF As New List(Of String)({"INC BYTE ", "DEC BYTE ", "CALL WORD NEAR", "CALL WORD FAR", "JMP WORD NEAR", "JMP WORD FAR", "PUSH WORD", Nothing})
-   Private ReadOnly OPCODES_FE__C0FF As New List(Of String)({"INC BYTE ", "DEC BYTE ", "CALL", Nothing, "JMP", Nothing, "PUSH", Nothing})
-   Private ReadOnly OPCODES_FF__00BF As New List(Of String)({"INC WORD ", "DEC WORD ", "CALL WORD NEAR", "CALL WORD FAR", "JMP WORD NEAR", "JMP WORD FAR", "PUSH WORD", Nothing})
-   Private ReadOnly OPCODES_FF__C0FF As New List(Of String)({"INC WORD ", "DEC WORD ", "CALL", Nothing, "JMP", Nothing, "PUSH", Nothing})
+   Private ReadOnly OPCODES_FE__00BF As New List(Of String)({"INC BYTE", "DEC BYTE", "CALL WORD NEAR", "CALL WORD FAR", "JMP WORD NEAR", "JMP WORD FAR", "PUSH WORD", Nothing})
+   Private ReadOnly OPCODES_FE__C0FF As New List(Of String)({"INC BYTE", "DEC BYTE", "CALL", Nothing, "JMP", Nothing, "PUSH", Nothing})
+   Private ReadOnly OPCODES_FF__00BF As New List(Of String)({"INC WORD", "DEC WORD", "CALL WORD NEAR", "CALL WORD FAR", "JMP WORD NEAR", "JMP WORD FAR", "PUSH WORD", Nothing})
+   Private ReadOnly OPCODES_FF__C0FF As New List(Of String)({"INC WORD", "DEC WORD", "CALL", Nothing, "JMP", Nothing, "PUSH", Nothing})
 
    'These lists contain the CPU register names.
    Private ReadOnly LH_REGISTERS As New List(Of String)({"AL", "CL", "DL", "BL", "AH", "CH", "DH", "BH"})
