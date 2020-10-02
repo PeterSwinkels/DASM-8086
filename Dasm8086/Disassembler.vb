@@ -376,7 +376,10 @@ Public Class DisassemblerClass
                Position = PreviousPosition
             End If
 
-            If Instruction = Nothing Then Instruction = $"DB {BytesToHexadecimal({Opcode}.ToList())}"
+            If Instruction = Nothing Then
+               Instruction = $"DB {BytesToHexadecimal({Opcode}.ToList())}"
+               Position = PreviousPosition
+            End If
 
             Return Instruction
          End If
