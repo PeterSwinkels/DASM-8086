@@ -51,7 +51,7 @@ Public Module InterfaceModule
    Private Const OPTION_TYPE As Char = "t"c      'Defines the "display binary type" option specifier.
    Private Const OPTION_WAIT As Char = "w"c      'Defines the "wait before quitting" option specifier.
 
-   Private WithEvents Disassembler As New DisassemblerClass   'Contains the reference to the disassembler.
+   Private WithEvents Disassembler As New DisassemblerClass   'Contains a reference to the disassembler.
 
    'This procedure is executed when this program is started.
    Public Sub Main()
