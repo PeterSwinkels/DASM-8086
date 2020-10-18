@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Dasm8086")>
-<Assembly: AssemblyDescription("This program disassembles 8086/8088/80186 opcodes to x86 assembly language.")>
+<Assembly: AssemblyDescription("This program disassembles 8086 opcodes to x86 assembly language.")>
 <Assembly: AssemblyCompany("Peter Swinkels")> 
 <Assembly: AssemblyProduct("Dasm8086")>
 <Assembly: AssemblyCopyright("***2013***")>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.2.2")>
-<Assembly: AssemblyFileVersion("1.0.2.2")>
+<Assembly: AssemblyVersion("1.0.2.3")>
+<Assembly: AssemblyFileVersion("1.0.2.3")>
