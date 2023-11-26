@@ -124,7 +124,7 @@ Public Module InterfaceModule
                PreviousPosition = Position + &H1%
                Instruction = .Disassemble(Code, Position)
                HexadecimalCode = .BytesToHexadecimal(.GetBytes(Code, PreviousPosition - &H1%, (Position - PreviousPosition) + &H1%), NoPrefix:=True, Reverse:=False)
-               Disassembly.Add($"{(PreviousPosition - &H1%):X8} {HexadecimalCode.PadRight(25, " "c)}{Instruction}")
+               Disassembly.Add($"{(PreviousPosition - &H1%):X8} {HexadecimalCode,-25}{Instruction}")
             Loop
          End With
 
@@ -258,9 +258,8 @@ Public Module InterfaceModule
             Loop
 
             With Arguments
-               .InputFile = ArgumentsList(ArgumentsE.Path).Trim
-               If .InputFile.StartsWith("""") Then .InputFile = .InputFile.Substring(1)
-               If .InputFile.EndsWith("""") Then .InputFile = .InputFile.Substring(0, .InputFile.Length - 1)
+               .InputFile = ArgumentsList(ArgumentsE.Path).Trim().Trim(""""c)
+
                If ArgumentsList(ArgumentsE.Range).Contains(COUNT_DELIMITER) Then
                   .StartPosition = ArgumentsList(ArgumentsE.Range).Substring(0, ArgumentsList(ArgumentsE.Range).IndexOf(COUNT_DELIMITER)).Trim
                   .Count = ArgumentsList(ArgumentsE.Range).Substring(ArgumentsList(ArgumentsE.Range).IndexOf(COUNT_DELIMITER) + 1).Trim
