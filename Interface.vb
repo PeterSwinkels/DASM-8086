@@ -58,14 +58,17 @@ Public Module InterfaceModule
       Try
          Dim Arguments As CommandLineArgumentsStr = ProcessCommandLine()
          Dim Code As New List(Of Byte)
-         Dim Position As Integer = TextToNumber(Arguments.StartPosition)
+         Dim Position As Integer = &H0%
 
          ExitCode = ERROR_SUCCESS
 
          If Arguments.InputFile = Nothing Then
             DisplayHelpAndInformation()
          Else
-            Code = New List(Of Byte)(File.ReadAllBytes(Arguments.InputFile))
+            Using FileO As New BinaryReader(New FileStream(Arguments.InputFile, FileMode.Open))
+               FileO.BaseStream.Seek(TextToNumber(Arguments.StartPosition), SeekOrigin.Begin)
+               Code = New List(Of Byte)(FileO.ReadBytes(CInt(FileO.BaseStream.Length - FileO.BaseStream.Position)))
+            End Using
 
             If Code IsNot Nothing Then
                If Arguments.Options.Contains(OPTION_HEADER) Then
