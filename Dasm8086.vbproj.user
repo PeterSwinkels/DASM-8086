@@ -8,4 +8,7 @@
     <StartArguments>
     </StartArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartArguments>d:\other\dasm8086.exe%2a%2at</StartArguments>
+  </PropertyGroup>
 </Project>

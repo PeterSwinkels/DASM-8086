@@ -17,17 +17,17 @@ Imports System.Runtime.InteropServices.Marshal
 'This module contains the user interface routines.
 Public Module InterfaceModule
    'The Microsoft Windows API constants and functions used by this program.
-   <DllImport("Kernel32.dll", SetLastError:=True)> Private Function GetBinaryTypeA(ByVal lpApplicationName As String, ByRef lpBinaryType As Integer) As Integer
+   <DllImport("Kernel32.dll", SetLastError:=True)> Private Function GetBinaryTypeA(ByVal lpApplicationName As String, ByRef lpBinaryType As UInteger) As Integer
    End Function
 
-   Private Const ERROR_SUCCESS As Integer = &H0%
-   Private Const SCS_32BIT_BINARY As Integer = &H0%
-   Private Const SCS_DOS_BINARY As Integer = &H1%
-   Private Const SCS_WOW_BINARY As Integer = &H2%
-   Private Const SCS_PIF_BINARY As Integer = &H3%
-   Private Const SCS_POSIX_BINARY As Integer = &H4%
-   Private Const SCS_OS216_BINARY As Integer = &H5%
-   Private Const SCS_64BIT_BINARY As Integer = &H6%
+   Private Const ERROR_SUCCESS As UInteger = &H0%
+   Private Const SCS_32BIT_BINARY As UInteger = &H0%
+   Private Const SCS_DOS_BINARY As UInteger = &H1%
+   Private Const SCS_WOW_BINARY As UInteger = &H2%
+   Private Const SCS_PIF_BINARY As UInteger = &H3%
+   Private Const SCS_POSIX_BINARY As UInteger = &H4%
+   Private Const SCS_OS216_BINARY As UInteger = &H5%
+   Private Const SCS_64BIT_BINARY As UInteger = &H6%
 
    'This enumeration lists the command line arguments supported by this program.
    Private Enum ArgumentsE As Integer
@@ -199,7 +199,7 @@ Public Module InterfaceModule
    'This procedure returns the binary type description for the specified file.
    Private Function GetFileType(Path As String) As String
       Try
-         Dim BinaryType As New Integer
+         Dim BinaryType As New UInteger
 
          If CBool(CheckForError(GetBinaryTypeA(Path, BinaryType), Path)) Then
             Select Case BinaryType
